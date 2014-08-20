@@ -16,6 +16,7 @@
 
 package com.trigonic.jrobotx;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -48,21 +49,15 @@ public class RobotExclusion {
 	 * Get a robot exclusion {@link RecordIterator} for the server in the specified {@link URL}, or null if none is
 	 * available. If the protocol is not supported--that is, not HTTP-based--null is returned.
 	 */
-	public RecordIterator get(URL url) {
+	public RecordIterator get(URL url) throws IOException {
 		RecordIterator recordIter = null;
 		
 		if (!SUPPORTED_PROTOCOLS.contains(url.getProtocol().toLowerCase())) {
 			return null;
 		}
 
-		try {
-			// TODO: this should support error conditions as described in the protocol draft
-			// TODO: use some kind of caching
-			URL robotsUrl = new URL(url, ROBOTS_TXT);
-			recordIter = new RecordIterator(urlInputStreamFactory.openStream(robotsUrl));
-		} catch (IOException e) {
-			LOG.info("Failed to fetch " + url, e);
-		}
+		URL robotsUrl = new URL(url, ROBOTS_TXT);
+		recordIter = new RecordIterator(urlInputStreamFactory.openStream(robotsUrl));
 
 		return recordIter;
 	}
@@ -72,8 +67,18 @@ public class RobotExclusion {
 	 * and iterates through the {@link RecordIterator} to find a matching {@link Record}.
 	 */
 	public Record get(URL url, String userAgentString) {
+		try {
+			return internalGet(url, userAgentString);
+		} catch(IOException e) {
+			LOG.info("Failed to fetch " + url, e);
+		}
+		return null;
+	}
+
+	public Record internalGet(URL url, String userAgentString) throws IOException {
 		Record result = null;
 		RecordIterator recordIter = get(url);
+
 		if (recordIter != null) {
 			while (recordIter.hasNext()) {
 				Record record = recordIter.next();
@@ -94,12 +99,36 @@ public class RobotExclusion {
 	 * and returns whether the matching record allows the {@link URL#getPath() path} specified in the URL.  
 	 */
 	public boolean allows(URL url, String userAgentString) {
+		return allows(url, userAgentString, true);
+	}
+
+	/**
+	 * @param defaultIfUnavailable Use this value if robots.txt cannot be accessed. Note that if robots.txt
+	 *                             does not exist (URLInputSreamFactory throws an FileNotFoundException),
+	 *                             this value is not used and allows() returns true as specified in the protocol.
+	 */
+	public boolean allows(URL url, String userAgentString, boolean defaultIfUnavailable) {
+		try {
+			return privateAllows(url, userAgentString);
+		} catch(IOException e) {
+			LOG.info("Failed to fetch " + url, e);
+			if (e instanceof FileNotFoundException) {
+				// No robots.txt => everything is good
+				return true;
+			}
+			// Other IOExceptions tells us to revert to the default
+			return defaultIfUnavailable;
+		}
+	}
+
+	private boolean privateAllows(URL url, String userAgentString) throws IOException
+	{
 	    // shortcut - /robots.txt might not exist, but it must be allowed
         if (Record.ruleMatches(ROBOTS_TXT, url.getFile())) {
             return true;
         }
             
-		Record record = get(url, userAgentString);
+		Record record = internalGet(url, userAgentString);
 		return record == null || record.allows(url.getPath());
 	}
 }
