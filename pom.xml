@@ -4,7 +4,7 @@
 	<name>jrobotx - Java Robot Exclusion Compliance Library</name>
 	<packaging>jar</packaging>
 	<url>https://github.com/sampov2/jrobotx</url>
-	<groupId>sampov2</groupId>
+	<groupId>com.github.sampov2</groupId>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
