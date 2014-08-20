@@ -1,6 +1,6 @@
 # JRobotX
 
-Library to provide compliance with the Web Robot Exclusion protocol (robots.txt)
+Library to provide compliance with the Web Robot Exclusion protocol (robots.txt). This is a fork of https://github.com/TrigonicSolutions/jrobotx
 
 ## Usage
 
