@@ -20,6 +20,7 @@ public final class Constants {
     public static final String ROBOTS_TXT = "/robots.txt";
 
     public static final String USER_AGENT = "User-agent";
+    public static final String USER_AGENT_BOTH_CAPITALIZED = "User-Agent";
     public static final String ALLOW = "Allow";
     public static final String DISALLOW = "Disallow";
     public static final String SITEMAP = "Sitemap";

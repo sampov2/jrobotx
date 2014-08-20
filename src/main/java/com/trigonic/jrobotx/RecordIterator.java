@@ -23,6 +23,7 @@ import static com.trigonic.jrobotx.Constants.DISALLOW;
 import static com.trigonic.jrobotx.Constants.FIELD_DELIM;
 import static com.trigonic.jrobotx.Constants.SITEMAP;
 import static com.trigonic.jrobotx.Constants.USER_AGENT;
+import static com.trigonic.jrobotx.Constants.USER_AGENT_BOTH_CAPITALIZED;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -98,7 +99,7 @@ public class RecordIterator extends AbstractIterator<Record> {
 					String[] pieces = splitLine(line);
 					if (pieces[0].equals("")) {
 					    // nothing on this line
-					} else if (pieces[0].equals(USER_AGENT)) {
+					} else if (pieces[0].equals(USER_AGENT) || pieces[0].equals(USER_AGENT_BOTH_CAPITALIZED)) {
 						if (inUserAgents) {
 							userAgents.add(pieces[1]);
 						} else {

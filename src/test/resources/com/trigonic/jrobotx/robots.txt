@@ -8,7 +8,8 @@ User-agent: webcrawler
 User-agent: excite
 	Disallow: 
 
-User-agent: *
+# Some files fail to adhere to the spec and capitalize both words
+User-Agent: *
 	Disallow: /org/plans.html
 	Allow: /org/
 	Allow: /serv
