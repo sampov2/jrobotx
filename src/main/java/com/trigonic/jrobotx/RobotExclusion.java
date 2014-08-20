@@ -66,16 +66,7 @@ public class RobotExclusion {
 	 * Get a robot exclusion {@link Record} for the specified {@link URL}, or null if none is available.  This uses {@link #get(URL)}
 	 * and iterates through the {@link RecordIterator} to find a matching {@link Record}.
 	 */
-	public Record get(URL url, String userAgentString) {
-		try {
-			return internalGet(url, userAgentString);
-		} catch(IOException e) {
-			LOG.info("Failed to fetch " + url, e);
-		}
-		return null;
-	}
-
-	public Record internalGet(URL url, String userAgentString) throws IOException {
+	public Record get(URL url, String userAgentString) throws IOException {
 		Record result = null;
 		RecordIterator recordIter = get(url);
 
@@ -128,7 +119,7 @@ public class RobotExclusion {
             return true;
         }
             
-		Record record = internalGet(url, userAgentString);
+		Record record = get(url, userAgentString);
 		return record == null || record.allows(url.getPath());
 	}
 }
