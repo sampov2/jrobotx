@@ -1,11 +1,76 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>spatineo</groupId>
-    <artifactId>nuclear-pom</artifactId>
-    <version>0.12</version>
-  </parent>
-  <groupId>spatineo</groupId>
-  <artifactId>jrobotx</artifactId>
-  <version>0.3-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>jrobotx - Java Robot Exclusion Compliance Library</name>
+	<packaging>jar</packaging>
+	<url>https://github.com/sampov2/jrobotx</url>
+	<groupId>sampov2</groupId>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+	
+	<artifactId>jrobotx</artifactId>
+	<version>0.3-SNAPSHOT</version>
+
+	<developers>
+		<developer>
+			<name>Alan Krueger</name>
+			<email>alan@trigonic.com</email>
+			<timezone>-6</timezone>
+		</developer>
+		<developer>
+			<name>Sampo Savolainen</name>
+			<email>sampo.savolainen@spatineo.com</email>
+			<timezone>2</timezone>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:sampov2/jrobotx.git</connection>
+		<url>scm:git:git@github.com:sampov2/jrobotx.git</url>
+		<developerConnection>scm:git:git@github.com:sampov2/jrobotx.git</developerConnection>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>2.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymockclassextension</artifactId>
+			<version>2.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
 </project>
