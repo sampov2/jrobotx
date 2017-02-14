@@ -45,4 +45,17 @@ public class RecordTest {
         assertFalse(record.allows("/foo/bar/index.html"));
         assertFalse(record.allows("/index.html"));
     }
+    
+    @Test
+    public void testCaseSensitivity()
+    {
+    	Set<String> userAgents = new HashSet<String>(Arrays.asList("Netscape"));
+    	List<String[]> rules = new ArrayList<String[]>();
+    	rules.add(new String[] {"Disallow", "/"});
+
+    	Record record = new Record(userAgents, rules);
+    	
+    	assertTrue(record.matches("Netscape"));
+    	assertTrue(record.matches("netscape"));
+    }
 }

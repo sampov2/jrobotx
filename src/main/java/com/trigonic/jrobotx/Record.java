@@ -49,6 +49,7 @@ public class Record {
 		
 		userAgentString = userAgentString.toLowerCase();
 		for (String userAgent : userAgents) {
+			userAgent = userAgent.toLowerCase();
 			if (userAgent.equals(ANY) || userAgentString.contains(userAgent)) {
 				result = true;
 				break;
