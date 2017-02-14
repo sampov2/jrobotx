@@ -13,9 +13,9 @@
 	</licenses>
 	
 	<parent>
-		<groupId>spatineo</groupId>
-		<artifactId>nuclear-pom</artifactId>
-		<version>0.15</version>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
 	</parent>
 	
 	<artifactId>jrobotx</artifactId>
