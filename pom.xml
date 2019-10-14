@@ -19,7 +19,7 @@
 	</parent>
 	
 	<artifactId>jrobotx</artifactId>
-	<version>0.5-SNAPSHOT</version>
+	<version>0.5</version>
 
 	<developers>
 		<developer>
