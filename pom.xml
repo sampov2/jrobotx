@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>spatineo</groupId>
 		<artifactId>nuclear-pom</artifactId>
-		<version>0.15</version>
+		<version>0.18</version>
 	</parent>
 	
 	<artifactId>jrobotx</artifactId>
