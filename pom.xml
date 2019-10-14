@@ -14,8 +14,8 @@
 	
 	<parent>
 		<groupId>spatineo</groupId>
-		<artifactId>nuclear-pom</artifactId>
-		<version>0.18</version>
+		<artifactId>nuclear-pom-jdk6</artifactId>
+		<version>0.19</version>
 	</parent>
 	
 	<artifactId>jrobotx</artifactId>
@@ -75,14 +75,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
 			<plugin>
 				<inherited>true</inherited>
 				<groupId>org.apache.maven.plugins</groupId>
