@@ -19,7 +19,7 @@
 	</parent>
 	
 	<artifactId>jrobotx</artifactId>
-	<version>0.5-SNAPSHOT</version>
+	<version>0.5</version>
 
 	<developers>
 		<developer>
@@ -38,7 +38,8 @@
 		<connection>scm:git:git@github.com:sampov2/jrobotx.git</connection>
 		<developerConnection>scm:git:git@github.com:sampov2/jrobotx.git</developerConnection>
 		<url>git@github.com:sampov2/jrobotx.git</url>
-	</scm>
+	  <tag>jrobotx-0.5</tag>
+  </scm>
 
 	<dependencies>
 		<dependency>
